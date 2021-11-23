@@ -4,6 +4,7 @@
     <title>Excel批量處理</title>
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
     <script src="https://cdn.bootcss.com/xlsx/0.11.5/xlsx.core.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/docxtemplater@0.7.7/js/docxgen.js"></script>
 </head>
 <body>
 <style>
@@ -47,16 +48,6 @@
                     
                 }
             }
-            //在控制檯打印出來表格中的資料
-            // function createLookMap(field) {
-            //     var map = {};//建立一個空的json物件
-            //     for (var i = 0; i < jsonArr.length; i  ) {
-            //     var value = jsonArr[i];//將陣列中的元素作為json物件的值
-            //     var key = value[field];//選取一個屬性作為新的json物件的key
-            //     map[key] = value;
-            //     }
-            //     return map;
-            // }  
             
             persons[0]['管片类型']= persons[0]['管片类型及封顶块位置'].split(" ")[0]
             persons[0]['管片拼装点位']= persons[0]['管片类型及封顶块位置'].split(" ")[1]
