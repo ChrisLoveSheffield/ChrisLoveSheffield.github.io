@@ -80,12 +80,12 @@
             var data = persons[0]
             generate(data)
 
-
+            console.log(persons[0])
             function loadFile(url,callback){
                 PizZipUtils.getBinaryContent(url,callback);
             }
             function generate(data) {
-                loadFile("sample.docx",function(error,content){
+                loadFile("sample1.docx",function(error,content){
                     if (error) { throw error };
 
                     // The error object contains additional information when logged with JSON.stringify (it contains a properties object containing all suberrors).
@@ -117,7 +117,10 @@
                     var doc;
 
                     try {
-                        doc = new window.docxtemplater(zip, { paragraphLoop: true, linebreaks: true, nullGetter: function() {return "";}});
+                        doc = new window.docxtemplater(zip, { paragraphLoop: true,
+                             linebreaks: true, 
+                             //nullGetter: function() {return "";}
+                            });
                         
                     } catch(error) {
                         // Catch compilation errors (errors caused by the compilation of the template: misplaced tags)
