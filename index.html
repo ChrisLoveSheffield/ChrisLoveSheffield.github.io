@@ -114,10 +114,11 @@
                     }
 
                     var zip = new PizZip(content);
-                    console.log(zip)
                     var doc;
+
                     try {
-                        doc = new window.docxtemplater(zip, { paragraphLoop: true, linebreaks: true });
+                        doc = new window.docxtemplater(zip, { paragraphLoop: true, linebreaks: true, nullGetter: function() {return "";}});
+                        
                     } catch(error) {
                         // Catch compilation errors (errors caused by the compilation of the template: misplaced tags)
                         errorHandler(error);
