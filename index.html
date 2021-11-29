@@ -76,9 +76,14 @@
                     str = str.replace("{$"+key+"}",value)
                 }
             });
+            while(str.indexOf("{$")>=0){
+               let nullstr =  str.substring(str.indexOf("{$",0),str.indexOf("}",0)+1)
+               console.log(nullstr)
+               str= str.replace(nullstr,"")
+            }
             $("#text").html(str)
             var data = persons[0]
-            generate(data)
+            // generate(data)
 
             console.log(persons[0])
             function loadFile(url,callback){
