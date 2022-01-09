@@ -95,8 +95,8 @@
                 }
             }
             
-            persons[0]['管片类型']= persons[0]['管片类型及封顶块位置'].split(" ")[0]
-            persons[0]['管片拼装点位']= persons[0]['管片类型及封顶块位置'].split(" ")[1]
+            // persons[0]['管片类型']= persons[0]['管片类型及封顶块位置'].split(" ")[0]
+            //persons[0]['管片拼装点位']= persons[0]['管片类型及封顶块位置'].split(" ")[1]
             var str="韦双区间{$隧道}隧道{$环号}环施工参数： &#13;"
                     +"1.掘进推力{$总推力(kN)}KN,刀盘转速{$刀盘转速(rpm)}r/min，刀盘扭矩{$刀盘扭矩(kN·m)}KN•m，掘进速度{$掘进速度(mm/min)}mm/min,土仓顶部土压{$上部土仓压力(bar)}bar &#13;"
                     +"2.掘进时间 &#13;"
@@ -113,9 +113,24 @@
                     str = str.replace("{$"+key+"}",value)
                 }
             });
+            let reg =/\{\$(.*?)\}/g;
+            str.match(reg).forEach(i=>{
+                str = str.replace(i,"")
+            })
+            //console.log(str.match(reg))
             $("#text").html(str)
-            var data = persons[0]
-            generate(data,e.target.id)
+            let dataforEecel;
+            switch (e.target.id){
+                case "sample1":
+                    dataforEecel = persons[0]
+                    break
+                default:
+                    dataforEecel ={
+                        persons: persons
+                    };
+                    break;
+            }
+            //generate(dataforEecel,e.target.id)
 
 
             function loadFile(url,callback){
